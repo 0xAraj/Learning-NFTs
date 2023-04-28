@@ -18,6 +18,10 @@ contract myCollection is ERC721, Ownable {
         isMintEnabled = !isMintEnabled;
     }
 
+    function changeMaxSupply(uint _maxSupply) external onlyOwner {
+        maxSupply = _maxSupply;
+    }
+
     function mintNFT() public payable {
         require(isMintEnabled, "Mint not enabled!");
         require(msg.value == mintPrice, "Not enough funds");
